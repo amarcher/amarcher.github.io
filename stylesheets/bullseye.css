@@ -1,0 +1,139 @@
+
+@font-face {
+  font-family: 'icomoon';
+  src:url('../fonts/icomoon.eot?-c41ngi');
+  src:url('../fonts/icomoon.eot?#iefix-c41ngi') format('embedded-opentype'),
+    url('../fonts/icomoon.woff?-c41ngi') format('woff'),
+    url('../fonts/icomoon.ttf?-c41ngi') format('truetype'),
+    url('../fonts/icomoon.svg?-c41ngi#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-image: url(http://www.purplewallpaper.net/wp-content/uploads/2014/07/green-field-background-2.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  color: white;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+  margin: 0px;
+}
+
+header {
+  text-align: center;
+  height: 200px;
+}
+
+#header {
+  font-size: 500%;
+  margin-bottom: 0;
+}
+
+#subtitle {
+  font-size: 200%;
+  margin-top: 0;
+}
+
+#target {
+  width: 500px;
+  height: 500px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+#home_button {
+  position: absolute;
+  left:3px;
+  top:3px;
+}
+
+#breadcrumbs {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: -250px;
+  left: -250px;
+  margin: 0px;
+}
+
+#content {
+  max-width: 600px;
+  min-width: 200px;
+  width: 60%;
+  margin: 100px auto;
+  text-align: left;
+}
+
+.black {
+  background-color: #000000;
+}
+
+.blue {
+  background-color: #165DD9;
+}
+
+.red {
+  background-color: #C91A1A;
+}
+
+.white {
+  background-color: #FFFFFF;
+}
+
+.yellow {
+  background-color: #F7D705;
+}
+
+.sitelink {
+  color: #FFFFFF;
+  font-weight: 300%;
+  cursor: crosshair;
+}
+
+.sitelink:hover {
+  color: #000000;
+  cursor: crosshair;
+}
+
+.date {
+  color: #FFFFFF;
+  opacity: 0.5;
+}
+
+[data-icon]:before {
+        font-family: 'icomoon';
+        content: attr(data-icon);
+        speak: none;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+    }
+
+ul {
+  list-style: none;
+}
+
+blockquote {
+  margin: 0px auto;
+  white-space: pre-wrap;
+  width: 90%;
+  background-color: #0f0f0f;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.wrong {
+  color: #C91A1A;
+}
+
+.correct {
+  color: #165DD9;
+}

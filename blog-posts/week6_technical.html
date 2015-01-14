@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Andrew Archer: Blog</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/blog-stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/bullseye.css">
+  </head>
+  <body>
+    <div class="post">
+      <p class='title'> Ruby Closures: Blocks, Procs, Lambdas </p>
+      <p class='date'> Sunday, September 14, 2014 </p>
+      <p class='subtitle'> What's a Closure? </p>
+      <p class='text'> "Closures" are essentially functions that let you hold onto variables that were in scope when they were created -- which is especially useful if those variables are no longer in scope or are subsequently reassigned. Here's an example:</p>
+      <p class='text'>
+        <pre class="prettyprint ruby">
+titanic_passenger = "Rose"
+
+# Method returns a "closure" -- a function retaining the *value* of the argument that is passed to it
+def perform_action(on_person)
+ return Proc.new { |action| puts "#{action} #{on_person}!" }
+end
+
+lifeboat = perform_action(titanic_passenger)
+# The lifeboat variable is now effectively a function that looks like this:
+# def lifeboat(action)
+#   puts "#{action} Rose!"
+# end
+# This is a closure!
+
+# So even if the value of titanic_passenger changes...
+titanic_passenger = "Jack"
+
+# Our closure retains the value from when it was created...
+# making sure we save the right titanic_passenger -- the one that was in scope when lifeboat was created
+["Carry","Save"].each { |kind_act| lifeboat.call(kind_act) }
+# => Carry Rose!
+# => Save Rose!</pre>
+      </p>
+      <p class='text'>Sorry, Jack. You weren't in scope when our closure was defined.</p>
+      <p class='subtitle'>Kinds of Closures in Ruby </p>
+      <p class='text'>
+        Ruby has three types of closures -- Blocks, Procs, and Lambdas. They are slightly different in how they function and what they allow you to do.
+      </p>
+      <p>
+        <table>
+          <thead>
+            <tr>
+              <td>Closure Type</td>
+              <td>Class</td>
+              <td>Checks # arguments?</td>
+              <td>May store in variable?</td>
+              <td>Executes like...</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Block</td>
+              <td>Proc</td>
+              <td>No</td>
+              <td>No</td>
+              <td>N/A</td>
+            </tr>
+            <tr>
+              <td>Proc</td>
+              <td>Proc</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Code in current scope</td>
+            </tr>
+            <tr>
+              <td>Lambda</td>
+              <td>Proc</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Separate method</td>
+            </tr>
+          </tbody>
+        </table>
+      </p>
+      <p class='subtitle'> Blocks </p>
+      <p class='text'>
+        Blocks are the marquee closures of Ruby. They are effectively stand-alone anonymous functions that can be executed or yielded to. Blocks can take the following syntax:
+      </p>
+      <p class='text'>
+        <pre class="prettyprint ruby">
+people = %w{ Andy Jenn Russell }
+
+# do ... end
+people.each do |person|
+  print "#{person} is here... "
+end
+# => Andy is here... Jenn is here... Russell is here...
+
+# curly braces
+people.each { |person| print "#{person} is here... " }
+# => Andy is here... Jenn is here... Russell is here... </pre>
+      </p>
+      <p class='text'>
+        Blocks may be executed on each element of an Enumberable (as we see above). They can also be yielded to from within the context of a method or passed as explicit arguments to a method which encapsulates them in a Proc (which we'll examine next):
+      </p>
+      <p class='text'>
+      <pre class="prettyprint ruby">
+# Here, a method yields to a block that's provided then continues
+def roll_call(present_folks)
+  present_folks.each {|person| yield(person); print "here... "}
+  print "\n"
+end
+roll_call(people) { |individual| print "#{individual} is "}
+# => Andy is here... Jenn is here... Russell is here...
+
+# Here, a method expects a block as an argument -- it uses the & operator to capture
+# the block as a Proc and assign it to a local variable called 'code' then uses its #call
+# method to invoke it
+def roll_call(present_folks, &code)
+  present_folks.each { |person| code.call(person); print "here... "}
+  print "\n"
+end
+roll_call(people)  { |individual| print "#{individual} is "}
+# => Andy is here... Jenn is here... Russell is here... </pre>
+      </p>
+      <p class='subtitle'>Procs</p>
+      <p class='text'>
+        The next type of closure is called a Proc -- short for "proceedure." It's like a block in that it is a standalone piece of code that can be executed in a different context. The most notable difference is that it can be assigned to a variable (note: above the block becomes a Proc when it is assigned to a variable). This is useful when you want to call it multiple times in your code without writing out the block again. Procs can be created and called with the following syntax:
+      </p>
+      <p class='text'>
+        <pre class="prettyprint ruby">
+# Create a proc by instantiating a new instance of the Proc class:
+greet = Proc.new { |person| puts "Hello, #{person}!" }
+
+# Call a proc
+greet.call("Andy")
+# => Hello, Andy!
+
+# Or pass it to a method and call it there (note, no need for an '&')
+def warm_welcome(person, proceedure)
+  proceedure.call(person)
+end
+warm_welcome("Andy", greet)
+# => Hello, Andy!</pre>
+      </p>
+      <p class='subtitle'>Lambdas</p>
+      <p class='text'>
+        The final type of closure is called a Lambda. It's effectively a Proc in how it is created, assigned to variables, and called...
+      </p>
+      <pre class="prettyprint ruby">
+# Create a lambda with the corresponding keyword:
+greet_lambda = lambda { |person| puts "Hello, #{person}!" }
+
+# Call a labmda just like a Proc
+greet_lambda.call("Andy")
+# => Hello, Andy!
+
+# Or pass it to a method and call it just like a Proc (note, no need for an '&')
+def warm_welcome(person, proceedure)
+  proceedure.call(person)
+end
+warm_welcome("Andy", greet_lambda)
+# => Hello, Andy!</pre>
+      </p>
+      <p class='text'>
+        It is like a Proc in every way except two: (1) Ruby checks that it's passed the correct number of arguments; and (2) it gets executed as if it were just additional code in the current scope. Both sound complex, but they're really simple: (1) means that Ruby will throw an error when it attempts to run your lambda with the wrong number of arguments and (2) means that return statements in lambdas just drop you back where you were when you started running them. A Proc would do something different: it would act like a code-snippet that had been pasted into the calling scope -- a return/break statement would cause the current (calling) method to return or break. Here's what I mean:
+      </p>
+      <p class='text'>
+        <pre class="prettyprint ruby">
+# The first difference: Ruby checks that lambda gets the right # of arguments
+greet_lambda.call
+# => ArgumentError: wrong number of arguments (0 for 1)
+
+# It did no such thing with our Proc -- instead it assigned missing values the value nil
+greet.call
+# => Hello, !
+
+# Now to illustrate the second difference:
+what_to_say_lambda = lambda { print "Hello, "; return }
+what_to_say_proc = Proc.new { print "Hello, "; return }
+
+def salute(person, greeting)
+  greeting.call
+  puts person
+end
+
+# Watch as lambda gets executed as if it were just additional code in the current scope
+salute("Andy", what_to_say_lambda)
+# => Hello, Andy
+
+# Proc basically pastes its code into the calling context causing it to return 'unexpectedly'
+salute("Andy", what_to_say_proc)
+# => Hello, LocalJumpError: unexpected return</pre>
+      </p>
+      <p class='text'>
+        I hope this brief overview of Ruby closures has aided your understanding, or at least encouraged you to research & experiment more. For additional reading I encourage you to check out these sources:
+      </p>
+      <p class='text'> </p>
+      <p class='subtitle'>Additional Reading</p>
+      <ul class='list'>
+        <li><a class='sitelink' href='http://tech.favoritemedium.com/2012/10/ruby-block-vs-procnew-vs-lambda-vs.html'>Ruby Block vs Proc.new vs Lambda vs method(:func) Summarized</a></li>
+        <li><a class='sitelink' href='http://programmers.stackexchange.com/questions/180579/what-is-a-closure-and-how-is-it-implemented-in-ruby'>What is a closure and how is it implemented in Ruby?</a></li>
+        <li><a class='sitelink' href='http://www.elonflegenheimer.com/2012/07/08/understanding-ruby-closures.html'>Understanding Ruby Closures</a></li>
+        <li><a class='sitelink' href='https://coderwall.com/p/_-_mha'>Four types of ruby closures block, Proc, lambda and method</a></li>
+        <li><a class='sitelink' href='http://www.reactive.io/tips/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/'>Understanding Ruby Blocks, Procs and Lambdas</a></li>
+      </ul>
+    </div>
+    <svg id="breadcrumbs" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <!--<circle id="white" cx="50%" cy="50%" r="43.75%" fill='#FFFFFF' />-->
+        <!--<circle id="black" cx="50%" cy="50%" r="34.375%" fill='#000000' />-->
+        <circle id="blue" cx="50%" cy="50%" r="25%" fill='#165DD9' />
+        <circle id="red" cx="50%" cy="50%" r="15.625%" fill='#C91A1A' />
+
+        <defs>
+          <path id="blog"
+                d="M 250 312.5
+                   A 62 62 0 0 0 312.5 250" />
+          <path id="post"
+                d="M 250 359.3
+                   A 109 109 0 0 0 359.3 250" />
+        </defs>
+
+        <a xlink:href="#" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <text text-anchor="middle" id="post_id" style="font-family:'Roboto Slab'; font-size: 90%;">
+            <textPath xlink:href="#post" startOffset="50%">
+              Ruby Closures
+            </textPath>
+          </text>
+        </a>
+
+        <a xlink:href="index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <text text-anchor="middle" id="blogposts" style="font-family:'Roboto Slab'; font-size: 90%;">
+            <textPath xlink:href="#blog" startOffset="50%">
+              Blog-Posts
+            </textPath>
+          </text>
+        </a>
+
+        <a xlink:href="../index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <circle id="yellow" cx="50%" cy="50%" r="6.25%" fill='#F7D705' xlink:href="../index.html" />
+        </a>
+    </svg>
+    <a href='../index.html' class='sitelink' id="home_button">
+      <span aria-hidden="true" data-icon="&#xe605;"></span>
+    </a>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=doxy"></script>
+  </body>
+</html>

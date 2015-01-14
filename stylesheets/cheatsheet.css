@@ -1,0 +1,101 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab&subset=latin,vietnamese);
+
+body {
+  background-color: rgb(137, 136, 132);
+  font-family: 'Roboto Slab', serif;
+  color: white;
+}
+
+header {
+  margin: 10px auto 30px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 225%;
+}
+
+h3 {
+  font-size: 115%;
+}
+
+ul#table_of_contents {
+  max-width: 740px;
+  margin: 10px auto 0px;
+  text-align: center;
+}
+
+li {
+  display: inline;
+}
+
+.subtitle {
+  font-size: 200%;
+}
+
+div.ruby {
+  float: left;
+}
+
+div.js {
+  float: left;
+}
+
+article.ruby {
+  background-color: #FCBEBE;
+  position: relative;
+}
+
+article.js {
+  background-color: #FFFFA3;
+  position: relative;
+}
+
+section {
+  clear:both;
+  border-top: 2px ridge;
+  padding-top: 5px;
+  margin: 30px auto;
+  min-width: 380px;
+  max-width: 800px;
+}
+
+article {
+  width:40%;
+  margin: 15px 20px;
+  width: 360px;
+}
+
+article p {
+  color: black;
+  font-weight: bold;
+  background-color: black;
+  padding: 1px 10px;
+}
+
+article.ruby p {
+  background-color: #FFABAB;
+}
+
+article.js p {
+  background-color: #FDFD82;
+}
+
+span.ruby {
+  color: #FFABAB;
+}
+
+span.js {
+  color: #FDFD82;
+}
+
+pre {
+  color: black;
+  font-family: monospace;
+  margin: 5px;
+  padding: 5px 10px 15px 10px;
+}
+
+a, li, h3 {
+  color: #D2D2D2;
+}

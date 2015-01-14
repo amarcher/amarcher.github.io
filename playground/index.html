@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>
+      Playground
+    </title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/bullseye.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <header>
+        <p id="header">Andrew Archer</span>
+        <p id="subtitle">Playground</span>
+    </header>
+    <svg id="breadcrumbs" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <!--<circle id="white" cx="50%" cy="50%" r="43.75%" fill='#FFFFFF' />-->
+        <!--<circle id="black" cx="50%" cy="50%" r="34.375%" fill='#000000' />-->
+        <!--<circle id="blue" cx="50%" cy="50%" r="25%" fill='#165DD9' />-->
+        <circle id="red" cx="50%" cy="50%" r="15.625%" fill='#C91A1A' />
+
+        <defs>
+          <path id="play"
+                d="M 250 312.5
+                   A 62 62 0 0 0 312.5 250" />
+        </defs>
+
+        <a xlink:href="index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <text text-anchor="middle" id="playground" style="font-family:'Roboto Slab'; font-size: 90%;">
+            <textPath xlink:href="#play" startOffset="50%">
+              Playground
+            </textPath>
+          </text>
+        </a>
+
+        <a xlink:href="../index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <circle id="yellow" cx="50%" cy="50%" r="6.25%" fill='#F7D705' xlink:href="../index.html" />
+        </a>
+    </svg>
+
+    <section id="content">
+      <article id="funstuff">
+        <a href="./Craps/">Craps!</a>
+      </article>
+      <article>
+        <a href="./css_wheel/">Sass Wheel</a>
+      </article>
+    </section>
+    <a href='../index.html' class='sitelink' id="home_button">
+      <span aria-hidden="true" data-icon="&#xe605;"></span>
+    </a>
+  </body>
+</html>

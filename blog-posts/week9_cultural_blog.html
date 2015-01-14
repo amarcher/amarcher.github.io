@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Andrew Archer: Blog</title>
+  <link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/blog-stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/bullseye.css">
+</head>
+<body>
+  <div class="post">
+    <p class='title'> Asking the Right Questions </p>
+    <p class='date'> Saturday, October 4, 2014 </p>
+    <p class='text'>I often cringe when I see bad questions. Whether they're long-winded, self-centered, or just in poor grammer I believe the root cause is invariably that the asker just didn't make the effort to consider their audience.</p>
+    <p class='text'>That said, today's post is *not* intended for the folks that ask bad questions.Those folks aren't reading my blog -- they just 'aint got time for that. What I want to do instead is to look at average questions that could be more effective. Below I examine three decent (but imperfect) questions I've asked this week and look how I'd improve them if I had the chance to ask them again.</p>
+    <p class='subtitle'> Post to Forum</p>
+    <p class='text'> Last week we were asked to compile 'cheatsheets' created by other peers in our program into one website. Unfortunately, in Phase 0 of DevBootcamp we're all working remotely and no guidance was provided on how to find our peers' work. Further, we weren't instructed where to share our own work. So on our Google+ community page I posted something like this:</p>
+    <blockquote cite='https://plus.google.com/104111490806182014031/posts/ZhVTUpVEu3s' class='wrong'>We created <a href='http://amarcher.github.io/assignments/unit3_cheatsheet.html'>this cheat sheet</a> on Looping in Ruby and Javascript. It seems like it's going to be difficult to find each others' cheatsheets unless we have a place to put them. Can others post theirs here?</blockquote>
+    <p class='text'>Suffice it to say, no one posted their cheatsheets in response, and why would they? The call to action was buried in the third sentence. I should have made it very clear from the beginning of the post that the request was:</p>
+    <blockquote class='correct'>"Where can I find your cheatsheet?"</blockquote>
+    <p class='text'>Soliciting audience participation should be the first objective. You need to help them help you!</p>
+    <p class='subtitle'> Emailed Question</p>
+    <p class='text'> Last week I asked these questions of a coworker via email:</p>
+    <blockquote class='wrong'>Whats the plan w.r.t. bug #1234567? Should we hold up our rollout until it is fixed? Will the behavior in bug #1234567 appear in the templates we're rolling out?</blockquote>
+    <p class='text'>I was asking because the bug had the potential to show up in a feature we were ready to launch. I wanted to understand the likelihood that it would, and if it was high I wanted to establish a timeline for when we'd expect that issue to be fixed in order to continue our launch.</p>
+    <p class='text'>The fact that I need to explain the questions here is telling. If I'd asked these questions assuming the audience had no context on the feature I was referencing -- a valid assumption here, I'd have made it much easier for them to answer me. As it worked out, I got a confused response and had to follow up to explain myself. If I'd taken the extra steps to provide detail on how the feature we were launching works and why I thought it might be affected by this bug I would have made it easier for my audience to understand my concerns and speak to them. With that in mind, a better way to phrase the question would have been:</p>
+      <blockquote class='correct'>Can you help me determine if the feature we're preparing to launch tomorrow will be affected by this bug? [Explanation of feature]. If it is likely our feature will be affected, we'll reluctantly delay our launch until it is fixed. When do you expect that might be?</blockquote>
+      <p class='text'>So much clearer, and so much more actionable!</p>
+    <p class='subtitle'> Google Query</p>
+    <p class='text'> I was translating Ruby code to JavaScript for an exercise yesterday when I encountered a line in which I'd used a <a href='http://www.jacopretorius.net/2012/01/splat-operator-in-ruby.html'>Ruby splat operator</a> on an array to transform it into a list of arguments as I passed it to a function. I went to Google to see what equivalents JavaScript had for Ruby's splat operatorand tried a few questions:</p>
+    <blockquote class='wrong'>JavaScript splat function</blockquote>
+    <blockquote class='wrong'>JavaScript array splat</blockquote>
+    </blockquote>
+    <p class='text'>These weren't the right questions. In fact, they weren't even questions. I didn't find meaningful results until I stumbled onto an <a href='http://readystate4.com/2008/08/17/javascript-argument-unpacking-converting-an-array-into-a-list-of-arguments/'>article</a> far down in the results with a title that heralded an answer to the question I should have asked:</p>
+    <blockquote class='correct'>How do I convert an array into a list of arguments in JavaScript?</blockquote>
+    <p class='text'>This is undoubtedly better: at the time of writing it yields that awesomely helpful article as the second search result on Google. But what makes it better? The answer is that it concisely and completely describes the problem I was trying to solve. My earlier questions were anchored to terminology that I knew. I didn't think about the fact the splat operator might have multiple applications outside of this specific one I was interested in. It does though, and consequently the search results I had to sift through included many irrelevant tips on how JavaScript can fulfill other applications of the spat operator. In sum: I could have improved my question by being more <strong>specific</strong> and <strong>descriptive</strong> about <strong>what</strong> my problem was.</p>
+    <p class='subtitle'>Review</p>
+    <p class='text'>Asking answerable questions is an art -- one that takes effort. However, when you make that effort you will be rewarded with better answers provided faster and more enthusiastically.</p>
+  </div>
+  <svg id="breadcrumbs" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!--<circle id="white" cx="50%" cy="50%" r="43.75%" fill='#FFFFFF' />-->
+    <!--<circle id="black" cx="50%" cy="50%" r="34.375%" fill='#000000' />-->
+    <circle id="blue" cx="50%" cy="50%" r="25%" fill='#165DD9' />
+    <circle id="red" cx="50%" cy="50%" r="15.625%" fill='#C91A1A' />
+
+    <defs>
+      <path id="blog"
+      d="M 250 312.5
+      A 62 62 0 0 0 312.5 250" />
+      <path id="post"
+      d="M 250 359.3
+      A 109 109 0 0 0 359.3 250" />
+    </defs>
+
+    <a xlink:href="#" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+      <text text-anchor="middle" id="post_id" style="font-family:'Roboto Slab'; font-size: 90%;">
+        <textPath xlink:href="#post" startOffset="50%">
+          The Right Questions
+        </textPath>
+      </text>
+    </a>
+
+    <a xlink:href="index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+      <text text-anchor="middle" id="blogposts" style="font-family:'Roboto Slab'; font-size: 90%;">
+        <textPath xlink:href="#blog" startOffset="50%">
+          Blog-Posts
+        </textPath>
+      </text>
+    </a>
+
+    <a xlink:href="../index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+      <circle id="yellow" cx="50%" cy="50%" r="6.25%" fill='#F7D705' xlink:href="../index.html" />
+    </a>
+  </svg>
+  <a href='../index.html' class='sitelink' id="home_button">
+    <span aria-hidden="true" data-icon="&#xe605;"></span>
+  </a>
+</body>
+</html>

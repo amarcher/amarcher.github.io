@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Andrew Archer: Blog</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/blog-stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/bullseye.css">
+  </head>
+  <body>
+    <div class="post">
+      <p class='title'> JavaScript Pros & Cons </p>
+      <p class='date'> Wednesday, August 19, 2014 </p>
+      <p class='subtitle'> Why is JavaScript popular in web development? </p>
+      <p class='text'> JavaScript was developed in 1995 by Netscape for its then-popular browser: Netscape Navigator. It allowed programmers to code dynamic and interactive web-pages by providing the browsers with instructions to manipulate the web-page's content, formatting, and structure via its Document Object Model (DOM). Because it was the <strong>only</strong> languge Netscape Navigator supported, it was the de facto language-of-choice for any developer who wanted to make dynamic and interactive websites that could run on all popular browser platforms. As if it needed additional name-recognition: JavaScript also encapsulated the name "Java" within its name although it had almost no relation. The "Java" language was already popular at the time for software development. </p>
+      <p class='subtitle'> What are the great things about JavaScript?  </p>
+      <p class='text'> Aside from enabling dynamic web design, has a few other great features. Principly, JavaScript is fast and loose with data types. As a programmer this means two things: (1) you don't have to fear compile-time errors: your program rums and doesn't exit when it hits an error and (2) you don't have to do lots of rigorous type-checking (as you might in languages like Objective-C) which add lots of extra lines of code.</p>
+      <p class='subtitle'> What are its limitations? </p>
+      <p class='text'> JavaScript isn't pefect and has some limitations. Notable among these: (1) it cannot communicate with the server (to fetch or store information from server databases) without using techniques like <a href='http://www.w3schools.com/ajax/ajax_intro.asp'>AJAX</a> and (2) it cannot write information on the client save for in small packets called <a href='http://en.wikipedia.org/wiki/HTTP_cookie'>cookies</a> which are prescribed strict access limitations by the browser.</p>
+    </div>
+    <svg id="breadcrumbs" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <!--<circle id="white" cx="50%" cy="50%" r="43.75%" fill='#FFFFFF' />-->
+        <!--<circle id="black" cx="50%" cy="50%" r="34.375%" fill='#000000' />-->
+        <circle id="blue" cx="50%" cy="50%" r="25%" fill='#165DD9' />
+        <circle id="red" cx="50%" cy="50%" r="15.625%" fill='#C91A1A' />
+
+        <defs>
+          <path id="blog"
+                d="M 250 312.5
+                   A 62 62 0 0 0 312.5 250" />
+          <path id="post"
+                d="M 250 359.3
+                   A 109 109 0 0 0 359.3 250" />
+        </defs>
+
+        <a xlink:href="#" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <text text-anchor="middle" id="post_id" style="font-family:'Roboto Slab'; font-size: 90%;">
+            <textPath xlink:href="#post" startOffset="50%">
+              JavaScript: Pros & Cons
+            </textPath>
+          </text>
+        </a>
+
+        <a xlink:href="index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <text text-anchor="middle" id="blogposts" style="font-family:'Roboto Slab'; font-size: 90%;">
+            <textPath xlink:href="#blog" startOffset="50%">
+              Blog-Posts
+            </textPath>
+          </text>
+        </a>
+
+        <a xlink:href="../index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <circle id="yellow" cx="50%" cy="50%" r="6.25%" fill='#F7D705' xlink:href="../index.html" />
+        </a>
+    </svg>
+    <a href='../index.html' class='sitelink' id="home_button">
+      <span aria-hidden="true" data-icon="&#xe605;"></span>
+    </a>
+  </body>
+</html>

@@ -1,0 +1,121 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab&subset=latin,vietnamese);
+
+* {
+  font-family: 'Roboto Slab', serif;
+}
+
+body {
+  color: #B8E6E6;
+  height: 100%;
+  width: 100%;
+}
+
+a {
+  color: white;
+  font-weight: 200;
+}
+
+a:hover {
+  color: yellow;
+}
+
+a:visited {
+  color: gray;
+}
+
+div.post {
+  background-color: #2B2F32;
+  clear: both;
+  display: block;
+  margin: 20px auto;
+  max-width: 900px;
+  min-height: 100px;
+  min-width: 200px;
+  padding: 1px 20px 1px 20px;
+  width: 70%;
+}
+
+.post p {
+  width: 95%;
+  text-align: left;
+  position: relative;
+}
+
+.title {
+  color: white;
+  font-size: 2em;
+}
+
+.date {
+  color: white;
+  font-size: .5em;
+  top: -20px;
+}
+
+.caption, .caption a {
+  color: white;
+  font-size: .5em;
+  top: 0px;
+  margin-bottom: 1em;
+}
+
+.subtitle {
+  color: white;
+  font-size: 1.2em;
+}
+
+.text {
+  color: #B8E6E6;
+}
+
+dl, dt, dd {
+  opacity: 60%;
+}
+
+header, section, footer, aside, nav, main, article, figure
+{
+display: block;
+}
+
+pre {
+  text-align: left;
+  font-family: "Courier New", Courier, monospace;
+  font-size: .9em;
+}
+
+.list {
+  text-align: left;
+  list-style: disc;
+}
+
+table {
+  text-align: left;
+  border: none;
+  padding: 0px;
+  margin-bottom: 30px;
+}
+
+thead tr td {
+  color: white;
+  font-size: 1.02em;
+  background-color: #474747;
+}
+
+td {
+  width: 20%;
+  color: #B8E6E6;
+}
+
+#six td {
+  width: 16.666666667%;
+  color: #B8E6E6;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #2B2B2B;
+}
+
+tr:nth-child(odd) {
+    background-color: #272727;
+}

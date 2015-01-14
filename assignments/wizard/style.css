@@ -1,0 +1,109 @@
+header {
+  font-size: 4em;
+  margin: 0px auto;
+  text-align: center;
+}
+
+table {
+  margin: 0px auto;
+}
+
+td {
+  width: 61px;
+  height: 61px;
+  border: 1px solid black;
+}
+
+div {
+  width: 57px;
+  height: 57px;
+  border: 1px solid black;
+  margin: 2px 2px 2px 2px;
+  text-align: center;
+}
+
+.form_human {
+  background-image: url(img/human.jpg);
+  background-size: 57px 57px;
+}
+
+#wizard {
+  background-image: url(img/human_wizard.png);
+  background-size: 57px 57px;
+}
+
+#treat {
+  background-image: url(img/bacon.jpg);
+  background-size: 57px 57px;
+}
+
+#wand {
+  background-image: url(img/wand.jpg);
+  background-size: 57px 57px;
+}
+
+.form_frog {
+  background-image: url(img/frog.jpg);
+  background-size: 57px 57px;
+}
+
+.form_dog {
+  background-image: url(img/dog.jpg);
+  background-size: 57px 57px;
+}
+
+.held {
+  display:none;
+}
+
+.has_wand:after {
+  content: " w/ wand";
+  color: orange;
+}
+
+.has_treat:after {
+  content: " w/ treat";
+  color: orange;
+}
+
+#wizard {
+  color: black;
+}
+
+#console{
+  font: courier, serif;
+  font-size: 2em;
+  width: 620px;
+  margin: 5px auto 5px auto;
+}
+
+#commands {
+  position: absolute;
+  left:10px;
+  top:50px;
+  border: 1px solid black;
+  width: 280px;
+  padding: 10px 0px;
+}
+
+input {
+  width: 90%;
+  height: 30px;
+  font-size: 1em;
+  margin: 5px 5%;
+}
+
+legend {
+    position:absolute;
+    left:18px;
+    top: -10px;
+    width: 50%;
+    text-align: center;
+    background: white;
+}​
+
+@media screen and (max-width: 1100px) {
+  .grid {
+    margin-left: 268px;
+  }
+}

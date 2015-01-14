@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Andrew Archer: Blog</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/blog-stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/bullseye.css">
+    <style>
+      img#rails {
+        width: 80px;
+        margin: 10px auto;
+      }
+      td {
+        background-color: #2B2F32;
+        border: none;
+        text-align: left;
+      }
+      td#title_cell {
+        width: 60%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="post">
+      <table>
+        <tr>
+          <td id="rails_cell">
+            <img src='http://rubyonrails.org/images/rails.png' id='rails' />
+          </td>
+          <td id="title_cell">
+            <p class='title'> Rails </p>
+            <p class='date'> Sunday, September 28, 2014  </p>
+          </td>
+        </tr>
+      </table>
+      <p class='text'> We've covered a number of topics in Phase 0, but we haven't touched on Rails yet. To get my feet wet, I went through a <a href='http://guides.rubyonrails.org/getting_started.html'>tutorial on Rails</a> this week. I thought I'd give a brief overview of what it Rails is and what it lets you do.</p>
+      <p class='subtitle'> What is it? </p>
+      <p class='text'>Rails is a "web application framework." It is a utility that lets you create the common components of your web app -- e.g. all the structures (models, views, controllers), files, and directories -- using terminal commands. As it creates these entities, it adds to them all the boilerplate code they'll use and defines implicit relationships between them.</p>
+      <p class='subtitle'> Why is it useful? </p>
+      <p class='text'>When you're developing, you want to use your time defining how your app works -- i.e. building the unique parts of your application that let it do what it should. You don't want to spend your time writing the scaffolding of the app or the redundant boilerplate that's necessary for each entity you add to it. In fact these developer preferences are reflected in Rail's mission statement: (1) convention over configuration and (2) don't repeat yourself. This means: sacrifice some ability to customize your app infrastructure -- instead adhering to conventional setup -- and profit from not having to write code many times over.
+      <p class='subtitle'> How do you use it? </p>
+      <p class='text'>After installing the rails gem (from terminal: <code>gem install rails</code>) you can create your web app's scaffold using just one terminal command: <code>rails new your_app_name</code>. This creates a directory structure for your app and fills it with all the files/templates necessary to start serving your app locally with a simple command: <code>rails server</code>.</p>
+      <p class='text'>Rails applies the 'model view controller' framework for web apps. It lets you quickly "generate" new entites: models that will often have entries in your app's database, controllers that will let users interact with models, and views that will render your app to users via elegant templates. You use the <code>rails generate your_entity its_name its_instantiation_arguments</a> to do this. Significantly, as each of these entities is generated, all of the interfaces to it are defined according to convention. For instance, after you generate a controller, you can quickly configure its interface -- again with a simple terminal command -- to listen to conventional URI patterns and translate them to 'actions' which you can define as methods to respond to in your controller.</p>
+      <p class='text'>
+      <pre class='pretty_print bash'>$> rake routes
+       Prefix Verb   URI Pattern                  Controller#Action
+     articles GET    /articles(.:format)          articles#index
+              POST   /articles(.:format)          articles#create
+  new_article GET    /articles/new(.:format)      articles#new
+ edit_article GET    /articles/:id/edit(.:format) articles#edit
+      article GET    /articles/:id(.:format)      articles#show
+              PATCH  /articles/:id(.:format)      articles#update
+              PUT    /articles/:id(.:format)      articles#update
+              DELETE /articles/:id(.:format)      articles#destroy
+welcome_index GET    /welcome/index(.:format)     welcome#index
+         root GET    /                            welcome#index</pre>
+      </p>
+      <p class='subtitle'> What does Ruby on Rails mean? Where does Ruby factor in? </p>
+      <p class='text'>You'll use the Ruby language in all the templates Rails created for you in order build out the classes that constitute your models and their methods that will be called as controllers. You can also use a templating language called <a href='http://en.wikipedia.org/wiki/ERuby'>eRuby</a> to write code for templates that will render your app's interfaces as views.</p>
+      <p class='subtitle'> Summary </p>
+      <p class='text'>From what I can tell, Rails looks like a powerful development framework. It seems like it will make building web apps significantly less redundant by abstracting some of the low-level configuration work. Can't wait to get started with it in about a week at DBC!</p>
+    </div>
+    <svg id="breadcrumbs" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <!--<circle id="white" cx="50%" cy="50%" r="43.75%" fill='#FFFFFF' />-->
+        <!--<circle id="black" cx="50%" cy="50%" r="34.375%" fill='#000000' />-->
+        <circle id="blue" cx="50%" cy="50%" r="25%" fill='#165DD9' />
+        <circle id="red" cx="50%" cy="50%" r="15.625%" fill='#C91A1A' />
+
+        <defs>
+          <path id="blog"
+                d="M 250 312.5
+                   A 62 62 0 0 0 312.5 250" />
+          <path id="post"
+                d="M 250 359.3
+                   A 109 109 0 0 0 359.3 250" />
+        </defs>
+
+        <a xlink:href="#" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <text text-anchor="middle" id="post_id" style="font-family:'Roboto Slab'; font-size: 90%;">
+            <textPath xlink:href="#post" startOffset="50%">
+              Rails
+            </textPath>
+          </text>
+        </a>
+
+        <a xlink:href="index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <text text-anchor="middle" id="blogposts" style="font-family:'Roboto Slab'; font-size: 90%;">
+            <textPath xlink:href="#blog" startOffset="50%">
+              Blog-Posts
+            </textPath>
+          </text>
+        </a>
+
+        <a xlink:href="../index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <circle id="yellow" cx="50%" cy="50%" r="6.25%" fill='#F7D705' xlink:href="../index.html" />
+        </a>
+    </svg>
+    <a href='../index.html' class='sitelink' id="home_button">
+      <span aria-hidden="true" data-icon="&#xe605;"></span>
+    </a>
+  </body>
+</html>

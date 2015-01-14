@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Andrew Archer: Blog</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/blog-stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/bullseye.css">
+  </head>
+  <body>
+    <div class="post">
+      <p class='title'> Ruby's <code>Enumerable#group_by</code> Method </p>
+      <p class='date'> Friday, August 29, 2014 </p>
+      <p class='subtitle'> When its useful </p>
+      <p class='text'> Often you'll have a collection that you want to organize in a particular way. Ruby's <code>Enumerable</code> class offers a convenient method <code></code> to take your collection and sort it into a convenient hash that has keys corresponding your "grouping criteria" and values corresponding to all the elements in your collection that meet that condition. Let's look at some examples. </p>
+    <p class='subtitle'> Simple usage </p>
+    <p class='text'> Say you have an array of players, and you need to sort them into teams:</p>
+    <p class='text'>
+      <pre class="prettyprint ruby">
+      players = %w{ Andy Anna Ben Hilary Jennifer Jimmy Josh Nancy}
+      # => ["Andy", "Anna", "Ben", "Hilary", "Jennifer", "Jimmy", "Josh", "Nancy"]
+      colors = %w{ Red Blue Green}
+      # => ["Red", "Blue", "Green"]
+      teams = players.group_by do
+        colors[ rand(3) ]
+      end
+      # {"Red"=>["Andy", "Anna", "Hilary", "Nancy"], "Blue"=>["Ben"], "Green"=>["Jennifer", "Jimmy", "Josh"]}</pre>
+    </p>
+    <p class='text'>The <code>group_by</code> method gives you a nice data structure that's easy to use:</p>
+    <p class='text'>
+      <pre class="prettyprint ruby">
+      teams.each do |team_color, players|
+        puts "The #{team_color} Team has #{players.size} people: #{players.join(', ')}"
+      end
+      # The Red Team has 4 people: Andy, Anna, Hilary, Nancy
+      # The Blue Team has 1 people: Ben
+      # The Green Team has 3 people: Jennifer, Jimmy, Josh</pre>
+    </p>
+    <p class='subtitle'> More advanced usage </p>
+    <p class='text'>But what happens when you start with a more complex data structure like a hash? Let's take a look. Say for example you started with an array of players already assigned to teams.
+    <p class='text'>
+      <pre class="prettyprint ruby">
+      team_assignments = {
+      "Andy"     => "Red",
+      "Anna"     => "Green",
+      "Ben"      => "Blue",
+      "Hilary"   => "Blue",
+      "Jennifer" => "Red",
+      "Jimmy"    => "Green",
+      "Josh"     => "Blue",
+      "Nancy"    => "Green" }
+      # => {"Andy"=>"Red", "Anna"=>"Green", "Ben"=>"Blue", "Hilary"=>"Blue", "Jennifer"=>"Red", "Jimmy"=>"Green", "Josh"=>"Blue", "Nancy"=>"Green"}</pre>
+    </p>
+    <p class='text'>You can use <code>group_by</code> to group players on each team (see below) by passing a block to the function that looks at the <code>value</code> of each key/value pair. The result, however, is not that easy to use. Like above, you get a hash with keys corresponding to your "grouping condition" (here that's your previous values, i.e. teams). The frustrating novelty, though, is that the values in your new hash are arrays of two-member arrays that were your previous key and value. Bleh!</p>
+    <p class='text'>
+      <pre class="prettyprint ruby">
+    teams = team_assignments.group_by { |player, color| color }
+     # => {"Red"=>[["Andy", "Red"], ["Jennifer", "Red"]], "Green"=>[["Anna", "Green"], ["Jimmy", "Green"], ["Nancy", "Green"]], "Blue"=>[["Ben", "Blue"], ["Hilary", "Blue"], ["Josh", "Blue"]]}</pre>
+    </p>
+    <p class='text'>With a helper function you can turn this into a more useful structure resembling the one you got when your recieving element was a simple Array:</p>
+   <p class='text'>
+     <pre class="prettyprint ruby">
+      def make_simple(teams)
+        teams.each do |key,value|
+          value.collect! do |array|
+            array[0]
+          end
+        end
+      end
+
+      make_simple(teams)
+      # => {"Red"=>["Andy", "Jennifer"], "Green"=>["Anna", "Jimmy", "Nancy"], "Blue"=>["Ben", "Hilary", "Josh"]}</pre>
+       </p>
+    </div>
+    <svg id="breadcrumbs" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <!--<circle id="white" cx="50%" cy="50%" r="43.75%" fill='#FFFFFF' />-->
+        <!--<circle id="black" cx="50%" cy="50%" r="34.375%" fill='#000000' />-->
+        <circle id="blue" cx="50%" cy="50%" r="25%" fill='#165DD9' />
+        <circle id="red" cx="50%" cy="50%" r="15.625%" fill='#C91A1A' />
+
+        <defs>
+          <path id="blog"
+                d="M 250 312.5
+                   A 62 62 0 0 0 312.5 250" />
+          <path id="post"
+                d="M 250 359.3
+                   A 109 109 0 0 0 359.3 250" />
+        </defs>
+
+        <a xlink:href="#" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <text text-anchor="middle" id="post_id" style="font-family:'Roboto Slab'; font-size: 90%;">
+            <textPath xlink:href="#post" startOffset="50%">
+              Enumerable#group_by
+            </textPath>
+          </text>
+        </a>
+
+        <a xlink:href="index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <text text-anchor="middle" id="blogposts" style="font-family:'Roboto Slab'; font-size: 90%;">
+            <textPath xlink:href="#blog" startOffset="50%">
+              Blog-Posts
+            </textPath>
+          </text>
+        </a>
+
+        <a xlink:href="../index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <circle id="yellow" cx="50%" cy="50%" r="6.25%" fill='#F7D705' xlink:href="../index.html" />
+        </a>
+    </svg>
+    <a href='../index.html' class='sitelink' id="home_button">
+      <span aria-hidden="true" data-icon="&#xe605;"></span>
+    </a>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=doxy"></script>
+  </body>
+</html>

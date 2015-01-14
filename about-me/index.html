@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <title>
+      About Me
+    </title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/bullseye.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/about.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+      <header>
+          <p id="header">Andrew Archer</span>
+          <p id="subtitle">About Me</span>
+      </header>
+      <svg id="breadcrumbs" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <!--<circle id="white" cx="50%" cy="50%" r="43.75%" fill='#FFFFFF' />-->
+          <!--<circle id="black" cx="50%" cy="50%" r="34.375%" fill='#000000' />-->
+          <!--<circle id="blue" cx="50%" cy="50%" r="25%" fill='#165DD9' />-->
+          <circle id="red" cx="50%" cy="50%" r="15.625%" fill='#C91A1A' />
+
+          <defs>
+            <path id="about"
+                  d="M 250 312.5
+                     A 62 62 0 0 0 312.5 250" />
+          </defs>
+
+          <a xlink:href="index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+            <text text-anchor="middle" id="about-me" style="font-family:'Roboto Slab'; font-size: 90%;">
+              <textPath xlink:href="#about" startOffset="50%">
+                About Me
+              </textPath>
+            </text>
+          </a>
+
+          <a xlink:href="../index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+            <circle id="yellow" cx="50%" cy="50%" r="6.25%" fill='#F7D705' xlink:href="../index.html" />
+          </a>
+      </svg>
+
+      <section id="content">
+        <div id='bio_pic'>
+          <span>Andy's Bio Pic</span>
+        </div>
+        <article id="bio">
+          Andy just joined DevBootcamp's Phase 0! You'll see a lot of content here in the weeks to come.
+        </article>
+        <article id="twitter">
+        <article id="find_me">
+          <h2>Find Andy</h2>
+          <ul>
+            <li>
+              <a href='http://www.facebook.com/andrew.m.archer' class='sitelink'>
+                <span aria-hidden="true" data-icon="&#xe600;"> Facebook</span>
+              </a>
+            </li>
+            <li>
+              <a href='http://github.com/amarcher' class='sitelink'>
+                <span aria-hidden="true" data-icon="&#xe603;"> github</span>
+              </a>
+            </li>
+            <li>
+              <a href='http://instagram.com/archasaurus' class='sitelink'>
+                <span aria-hidden="true" data-icon="&#xe601;"> Instagram</span>
+              </a>
+            </li>
+            <li>
+              <a href='https://twitter.com/aarcher' class='sitelink'>
+                <span aria-hidden="true" data-icon="&#xe602;"> Twitter</span>
+              </a>
+            </li>
+            <li>
+              <a href='https://plus.google.com/104111490806182014031/posts' class='sitelink'>
+                <span aria-hidden="true" data-icon="&#xe607;"> Google+</span>
+              </a>
+            </li>
+          </ul>
+        </article>
+      </section>
+      <a href='../index.html' class='sitelink' id="home_button">
+        <span aria-hidden="true" data-icon="&#xe605;"></span>
+      </a>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Andrew Archer: Blog</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/blog-stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/bullseye.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/display_property_values.css">
+  </head>
+  <body>
+    <div class="post">
+      <p class='title'> The CSS "Display:" Property </p>
+      <p class='date'> Sunday, August 17, 2014 </p>
+      <p class='text'> A quick reference on common values for the "display:" property:</p>
+      <p class='subtitle'> Display: <span class='red_text'>Block</span></p>
+      <p class='text'> I get my <strong>own line</strong> and you better <strong>respect</strong> the <strong>height and width</strong> that's been specified for me! </p>
+      <div class="example">
+        <p class="box red block">Block</p>
+        <p class="box red block">Block</p>
+      </div>
+      <p class='subtitle'> Display: <span class='blue_text'>Inline</span></p>
+      <p class='text'> I'll <strong>share a line</strong> with other elements if there's space for my content there and <strong>don't worry</strong> about the <strong>height or width</strong> that's been specified for me, they're not important. </p>
+      <div class="example">
+        <p class="box blue inline">Inline</p>
+        <p class="box blue inline">Inline</p>
+      </div>
+      <p class='subtitle'> Display: <span class='yellow_text'>Inline-Block</span></p>
+      <p class='text'> I'll <strong>share a line</strong> with other elements if there's space for me, but you better <strong>respect</strong> the <strong>height and width</strong> that's been specified for me! </p>
+      <div class="example">
+        <p class="box yellow inline_block">Inline-Block</p>
+        <p class="box yellow inline_block">Inline-Block</p>
+      </div>
+      <p class='subtitle'> How do they play together? </p>
+      <p class='text'> Note below how the "block" element insists on getting its own line. The "inline" and "inline-block" elements are willing to share the line, but only "inline-block" gets to specify its height and width!</p>
+      <div class="example">
+        <p class="box red block">
+          Block
+        </p>
+        <p class="box blue inline">
+          Inline
+        </p>
+        <p class="box yellow inline_block">
+          Inline-Block
+        </p>
+      </div>
+      <p>
+      </p>
+    </div>
+    <svg id="breadcrumbs" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <!--<circle id="white" cx="50%" cy="50%" r="43.75%" fill='#FFFFFF' />-->
+        <!--<circle id="black" cx="50%" cy="50%" r="34.375%" fill='#000000' />-->
+        <circle id="blue" cx="50%" cy="50%" r="25%" fill='#165DD9' />
+        <circle id="red" cx="50%" cy="50%" r="15.625%" fill='#C91A1A' />
+
+        <defs>
+          <path id="blog"
+                d="M 250 312.5
+                   A 62 62 0 0 0 312.5 250" />
+          <path id="post"
+                d="M 250 359.3
+                   A 109 109 0 0 0 359.3 250" />
+        </defs>
+
+        <a xlink:href="#" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <text text-anchor="middle" id="post_id" style="font-family:'Roboto Slab'; font-size: 90%;">
+            <textPath xlink:href="#post" startOffset="50%">
+              "Display" Property Value
+            </textPath>
+          </text>
+        </a>
+
+        <a xlink:href="index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <text text-anchor="middle" id="blogposts" style="font-family:'Roboto Slab'; font-size: 90%;">
+            <textPath xlink:href="#blog" startOffset="50%">
+              Blog-Posts
+            </textPath>
+          </text>
+        </a>
+
+        <a xlink:href="../index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <circle id="yellow" cx="50%" cy="50%" r="6.25%" fill='#F7D705' xlink:href="../index.html" />
+        </a>
+    </svg>
+    <a href='../index.html' class='sitelink' id="home_button">
+      <span aria-hidden="true" data-icon="&#xe605;"></span>
+    </a>
+  </body>
+</html>

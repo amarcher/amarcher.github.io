@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cheatsheet</title>
+  <link href="../stylesheets/reset.css" type="text/css" rel="stylesheet" />
+  <link href="../stylesheets/cheatsheet.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+  <header>
+    <h1>Loops in <span class='ruby'>Ruby</span> and <span class='js'>Javascript</span></h1>
+    <h3>Andrew Archer and Ethan Spiro</h3>
+  </header>
+
+  <ul id="table_of_contents" class='top right'>
+    <li><a href='#repeat_times'>Loop # of Times</a> | </li>
+    <li><a href='#itterate_through'>Indexed For Loops</a> | </li>
+    <li><a href='#integrated_for'>Integrated For Loops</a> | </li>
+    <li><a href='#pre_test_loop'>Pre-Test Loops</a> | </li>
+    <li><a href='#post_test_loop'>Post-Test Loops</a></li>
+  </ul>
+
+  <section id="repeat_times">
+    <p class="subtitle">Loop # of Times</p>
+    <div class="ruby">
+      <article class="ruby">
+        <p>loop</p>
+        <pre class="prettyprint ruby">n = 0
+loop {
+  puts 'hi'
+  n += 1
+  break if n == 5
+}</pre>
+      </article>
+      <article class="ruby">
+        <p>times</p>
+        <pre class="prettyprint ruby">(1..10).times { puts 'hi'}</pre>
+      </article>
+    </div>
+    <div class="js">
+      <article class="js">
+        <p>loop</p>
+        <pre class="prettyprint js">n = 0
+for(;;) {
+  console.log('hi');
+  n++;
+  if (n == 5) {break;}
+}</pre>
+      </article>
+    </div>
+  </section>
+
+  <section id="itterate_through">
+    <p class="subtitle">Indexed For Loop</p>
+    <div class="ruby">
+    <article class="ruby">
+      <p>manual indexing for loop</p>
+      <pre class="prettyprint ruby">arr = [1,2,3,4,5]
+for i in 0...arr.length {
+  puts arr[i]
+}</pre>
+    </article>
+  </div>
+  <div class="js">
+    <article class="js">
+      <p>manual indexing for loop</p>
+      <pre class="prettyprint js">var arr = [1,2,3,4,5]
+for (var i=0; i < arr.length; i++) {
+  console.log(arr[i]);
+}</pre>
+      </article>
+    </div>
+    </section>
+
+    <section id="integrated_for">
+      <p class="subtitle">Integrated For Loop</p>
+      <div class="ruby">
+      <article class="ruby">
+        <p>hash</p>
+        <pre class="prettyprint ruby">hash = {1: "hello"}
+hash.each { |elem|
+  puts elem
+}
+# => [1,"hello"]</pre>
+      </article>
+      <article class="ruby">
+        <p>array</p>
+        <pre class="prettyprint ruby">arr = [1,2,3,4,5]
+arr.each { |val|
+  puts val
+}</pre>
+      </article>
+    </div>
+    <div class="js">
+      <article class="js">
+        <p>object</p>
+        <pre class="prettyprint js">var obj = {1: "hello"}
+for (var param in obj) {
+  console.log(param);
+}
+// => 1 (not "1: hello"!)</pre>
+      </article>
+      <article class="js">
+        <p>array</p>
+        <pre class="prettyprint js">var arr = [1,2,3,4,5]
+for (var num in arr) {
+  console.log(num);
+}</pre>
+      </article>
+    </div>
+    </section>
+
+    <section id="pre_test_loop">
+      <p class="subtitle">Pre-Test Loops</p>
+      <div class=ruby>
+      <article class="ruby">
+        <p>while</p>
+        <pre class="prettyprint ruby">n = 0
+while(n < 6) {
+  puts n
+  n += 1
+}</pre>
+      </article>
+      <article class="ruby">
+        <p>until</p>
+        <pre class="prettyprint ruby">n = 0
+until(n > 5) {
+  puts n
+  n += 1
+}</pre>
+      </article>
+    </div>
+        <div class="js">
+      <article class="js">
+        <p>while</p>
+        <pre class="prettyprint js">var n = 0
+while (n < 6) {
+  console.log(n);
+  n++;
+}</pre>
+      </article>
+      <div>
+    </section>
+
+    <section id="post_test_loop">
+      <p class="subtitle">Post-Test Loops</p>
+      <div class="ruby">
+      <article class="ruby">
+<p>begin ... end while</p>
+        <pre class="prettyprint ruby">n = 0
+begin
+  puts n
+  n += 1
+end while n < 6</pre>
+      </article>
+    </div>
+          <div class="js">
+      <article class="js">
+        <p>do ... while</p>
+        <pre class="prettyprint js">var n = 0
+do {
+  console.log(n);
+  n++;
+}
+while (n < 6);</pre>
+      </article>
+    </div>
+    </section>
+  </body>
+</html>

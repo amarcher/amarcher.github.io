@@ -1,0 +1,9 @@
+img {
+  width: 80%;
+}
+
+ul {
+  text-align: left;
+  list-style: disc;
+  margin-bottom: 2em;
+}

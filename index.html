@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <title>
+      Andrew Archer
+    </title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/bullseye.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text'>
+  </head>
+  <body>
+    <header>
+      <p id="header">Andrew Archer</p>
+      <p id="subtitle">DevBootcamp</p>
+    </header>
+    <svg id="target" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <circle id="white" cx="50%" cy="50%" r="43.75%" fill='#FFFFFF' style="cursor:crosshair;"/>
+      <circle id="black" cx="50%" cy="50%" r="34.375%" fill='#000000' style="cursor:crosshair;" />
+      <circle id="blue" cx="50%" cy="50%" r="25%" fill='#165DD9' style="cursor:crosshair;" />
+      <circle id="red" cx="50%" cy="50%" r="15.625%" fill='#C91A1A' style="cursor:crosshair;" />
+      <circle id="yellow" cx="50%" cy="50%" r="6.25%" fill='#F7D705' style="cursor:crosshair;" />
+
+      <defs>
+        <path id="blog"
+        d="M 250 453.125
+        A 203.125 203.125 0 0 0 453.125 250" />
+        <path id="assign"
+        d="M 453.125 250
+        A 203.125 203.125 0 0 0 250 46.875" />
+        <path id="about"
+        d="M 250 46.875
+        A 203.125 203.125 0 0 0 46.875 250" />
+        <path id="play"
+        d="M 46.875 250
+        A 203.125 203.125 0 0 0 250 453.125" />
+      </defs>
+
+      <a xlink:href="./blog-posts/index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+        <text text-anchor="middle" id="blog-posts" style="font-family:'Roboto Slab'; font-size: 200%;">
+          <textPath xlink:href="#blog" startOffset="50%">
+            Blog Posts
+          </textPath>
+        </text>
+      </a>
+
+      <a xlink:href="./assignments/index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+        <text text-anchor="middle" id="assignments" style="font-family:'Roboto Slab'; font-size: 200%;">
+          <textPath xlink:href="#assign" startOffset="50%">
+            Assignments
+          </textPath>
+        </text>
+      </a>
+
+      <a xlink:href="./about-me/index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+        <text text-anchor="middle" id="about-me" style="font-family:'Roboto Slab'; font-size: 200%;">
+          <textPath xlink:href="#about" startOffset="50%">
+            About Me
+          </textPath>
+        </text>
+      </a>
+
+      <a xlink:href="./playground/index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+        <text text-anchor="middle" id="playground" style="font-family:'Roboto Slab'; font-size: 200%;">
+          <textPath xlink:href="#play" startOffset="50%">
+            Playground
+          </textPath>
+        </text>
+      </a>
+
+    </svg>
+  </body>
+</html>

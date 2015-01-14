@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Andrew Archer: Blog</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/blog-stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/bullseye.css">
+  </head>
+  <body>
+    <div class="post">
+      <p class='title'>Magic: The Gathering Website Comparison</p>
+      <p class='date'>Sunday, August 10, 2014 </p>
+      <p class='text'>Full disclosure: I'm composing this post for Phase 0 of DevBootcamp. </p>
+      <p class='subtitle'> <a href="http://channelfireball.com">Channel Fireball</a></p>
+      <p class='text'>This is my favorite site for learning more about Magic: The Gathering strategy and for watching entertaining draft videos. It's also an online storefront for buying Magic: The Gathering products and I've used it to buy products like booster boxes and sleeves more than a few times. The site has undergone a few visual redesigns in recent months. The latest one neatly deliniates the strategy articles from videos -- which is a plus. Nothing is more disappointing than opening a link thinking you'll be able to read content only to find out you'll need to play a video (and can't b/c you're one a crowded bus with no headphones). I find that my eyes are drawn to the 'carousel' of rotating advertisements for products (e.g. "Deal of the Day"), announcements of upcoming events, and teasers for recently added strategy content. This area makes the website feel dynamic and current... and at the same time makes it look very commercial. The content on the homepage runs on below the fold of the page. There's almost too much going on and it becomes difficult to nagivate. It's hard to remember which of the articles you've read or videos you've viewed and it's not easy to click on the content you want in the carousel. Five ways I'd describe the site on two dimensions: </p>
+      <dl>
+        <dt>Aesthetics:</dt>
+          <dd>Cluttered, Colorful, Current, Dynamic, Engaging</dd>
+        <dt>Content:</dt>
+          <dd>Commercial, Entertaining, Informative, Nerdy, Overwhelming</dd>
+      </dl>
+      </p>
+
+      <p class='subtitle'> <a href="http://starcitygames.com">Star City Games</a></p>
+      <p class='text'>I haven't frequented this site often recently b/c I find myself sufficiently engaged with content on other Magic game-store sites, but this site has some good free strategy articles on Magic play by pros (it also has better articles that are available only to "Premium" members). It also provides a calendar for constructed events and an online storefront for buying Magic: The Gathering products. That said, I've never attended one of their events as I only play limited formats and I've never purchased products from them as I've found their prices are a lot higher than other sites. I like the clean look and feel of the site with its white background and neatly partitioned & titled modules. I find that my eyes are drawn to the 'carousel' in the middle of it's page where they display pictures of recent winners of events they've hosted. This area makes the website feel like it's your path to becoming a champion and doesn't make the website feel like a store (though it is). I dislike that many of the best articles available on the site require a paid subscription to view and they tease you with them anyway.Five ways I'd describe the site on two dimensions: </p>
+      <dl>
+        <dt>Aesthetics:</dt>
+          <dd>Basic, Clean, Clear, Dynamic, Simple</dd>
+        <dt>Content:</dt>
+          <dd>Enticing, Informative, Out-of-reach, Nerdy, Useful</dd>
+      </dl>
+      </p>
+
+
+      <p class='subtitle'> <a href="http://tcgplayer.com">TCG Player</a></p>
+      <p class='text'>This is the best source I've found on single card price evaluation -- as it aggregates prices from a number of vendors and lets you find the best value. When I've purchased singles (on the rare occasion I feel like speculating on cards), I've done it from here. TCG Player also has less-authoritative articles from less-well-known professionals on deck building and constructed/limited play. I come here mostly to understand what cards are really worth, but I sometimes am enticed to read articles on top decks or read up on results from recent events. The site itself has a lot going on. It hosts retail for a number of trading card games besides Magic, and this content clutters the otherwise simple white layout of the page. The home page's design looks a bit date: you see the foreground links and white background you'd expect on dawn-of-the-web pages. Antique look aside, I actually like the design of the site. Their card catalogue is easy to sort through. Five ways I'd describe the site on two dimensions: </p>
+      <dl>
+        <dt>Aesthetics:</dt>
+          <dd>Ancient, Boring, Concentrated, Plain, Vintage</dd>
+        <dt>Content:</dt>
+          <dd>Aggregated, Diverse, Non-Authoritative, Nerdy, Useful</dd>
+      </dl>
+      </p>
+    </div>
+    <svg id="breadcrumbs" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <!--<circle id="white" cx="50%" cy="50%" r="43.75%" fill='#FFFFFF' />-->
+        <!--<circle id="black" cx="50%" cy="50%" r="34.375%" fill='#000000' />-->
+        <circle id="blue" cx="50%" cy="50%" r="25%" fill='#165DD9' />
+        <circle id="red" cx="50%" cy="50%" r="15.625%" fill='#C91A1A' />
+
+        <defs>
+          <path id="blog"
+                d="M 250 312.5
+                   A 62 62 0 0 0 312.5 250" />
+          <path id="post"
+                d="M 250 359.3
+                   A 109 109 0 0 0 359.3 250" />
+        </defs>
+
+        <a xlink:href="#" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <text text-anchor="middle" id="post_id" style="font-family:'Roboto Slab'; font-size: 90%;">
+            <textPath xlink:href="#post" startOffset="50%">
+              Website Comparison
+            </textPath>
+          </text>
+        </a>
+
+        <a xlink:href="index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <text text-anchor="middle" id="blogposts" style="font-family:'Roboto Slab'; font-size: 90%;">
+            <textPath xlink:href="#blog" startOffset="50%">
+              Blog-Posts
+            </textPath>
+          </text>
+        </a>
+
+        <a xlink:href="../index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <circle id="yellow" cx="50%" cy="50%" r="6.25%" fill='#F7D705' xlink:href="../index.html" />
+        </a>
+    </svg>
+    <a href='../index.html' class='sitelink' id="home_button">
+      <span aria-hidden="true" data-icon="&#xe605;"></span>
+    </a>
+  </body>
+</html>

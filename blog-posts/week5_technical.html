@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Andrew Archer: Blog</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/blog-stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/bullseye.css">
+  </head>
+  <body>
+    <div class="post">
+      <p class='title'> Craps Class </p>
+      <p class='date'> Sunday, September 7, 2014 </p>
+      <p class='text'> After working with <class>Class</code>es in Ruby this week to build "Die" objects, I could not resist the temptation to put these dice to use in a game. In this post, I want to explain Classes and how they can be put to use to make a command line version of the the classic casino dice game <a href="http://en.wikipedia.org/wiki/Craps">Craps</a> .</p>
+      <p class='subtitle'> What's a <code>Class?</code> </p>
+      <p class='text'> A Class is a data structure that defines the qualities and behaviors common to a certain kind of object. I like to think of it as a mold that stamps-out individual objects -- called 'instances' -- so that they behave in a perscribed way. To show an example: here's a Die class that defines how an instance of a die should look and behave: </p>
+      <p class='text'>
+        <pre class="prettyprint ruby">
+          class Die
+            def initialize(sides)
+              raise ArgumentError, "Die must have at least one side!" unless sides > 0
+              @sides = sides
+            end
+
+            def sides
+              @sides
+            end
+
+            def roll
+              rand(1..@sides)
+            end
+          end</pre>
+      </p>
+      <p class='subtitle'> What goes into a <code>Class</code> definition?</p>
+      <p class='text'> In defining a <code>Class</code> you need to first specify how the Class 'constructs' an instance. You do this by defining <code>initialize</code> method that will be called from outside the Class definition like this:</p>
+      <p class='text'>
+        <pre class="prettyprint ruby">six_sided_die = Die.new(6)</pre>
+      </p>
+      <p class='text'> That Die.new "class method" will get handled by the #initialize method we define in the Die Class.</p>
+      <p class='subtitle'> Instance Variables </p>
+      <p class='text'> The argument(s) passed to the constructor allow it to set the enduring and salient attributes of this instance of the object -- the attributes that define it as an individual among its peers. We store these attributes in what are called "instance variables." In Ruby these begin with an '@' character. They are distinct from other types of variables (local or class variables) in that they have a very helpful scope: they are tied to this instance, are accessible to all methods defined for the instance, and may be configured to be read from, written to, or accessed by outside callers.
+      <p class='subtitle'> Instance Methods </p>
+      <p class='text'> In addition to defining attributes, a <code>Class</code> definition also needs to specify how the object behaves: what messages does it respond to and what should it do in response. We accomplish this with what are called instance methods. Let's look at the Craps game example to find these:</p>
+      <p class='text'>
+        <pre class="prettyprint ruby">class CrapsGame
+  attr_reader :bankroll, :point, :unresolved_bets, :prev_roll
+
+  def initialize(bankroll)
+    @bankroll = bankroll
+    @point = nil
+    @unresolved_bets = []
+    @prev_roll = Array.new(2)
+  end
+
+  def roll
+    @prev_roll = Array.new(2) { Die.new(6).roll }
+    puts "You rolled *#{@prev_roll[0]}* and *#{@prev_roll[1]}* for a total of **#{ @prev_roll[0] + @prev_roll[1] }**"
+    resolve_bets
+    determine_point
+  end
+
+  def bet(type, amount)
+    name = type.intern
+    raise ArgumentError, "There's no such bet as #{type}!" if (! BETS[name])
+    @unresolved_bets << Bet.new(name, amount, @point)
+    @bankroll -= amount
+  end
+
+  def walk_away
+    @unresolved_bets.each {|bet| @bankroll += bet.payout_on_take_down}
+  end
+
+  private
+
+  def resolve_bets
+    @unresolved_bets.each { |bet| resolve_bet(bet) }
+    @unresolved_bets.delete_if { |bet| bet.resolved? }
+  end
+
+  def resolve_bet(bet)
+    @bankroll += bet.payout_on_roll(@prev_roll)
+  end
+
+  def determine_point
+    roll_total = @prev_roll[0] + @prev_roll[1]
+    if (! @point) && [4,5,6,8,9,10].include?(roll_total)
+      @point = roll_total
+      @unresolved_bets.each { |bet| bet.change_for_point(@point) }
+      puts "#{ @point } is the point! Place your bets!"
+    elsif roll_total == @point || (@point && roll_total == 7) # point hit or seven rolled
+      @point = nil
+      puts "Coming out! Place your bets!"
+    end
+  end
+end</pre>
+     </p>
+     <p class='text'> Here we've defined several "public methods" -- these are significant messages that any Craps game should know how to respond to: <code>roll</code>, <code>bet</code>, and <code>walk_away</code>. We've also defined a set of "private methods" -- actions that the game needs to take on its own but no outside caller needs to have access to: <code>resolve_bets</code>, <code>resolve_bet</code>, and <code>determine_point</code>. These are the actions that the Craps game needs to perform on itself, but no outside callers need to perform. If you've ever been to a casino and played Craps you'll know: you don't need to tell the casino to take your money after a roll! They do this on their own in response to your roll.</p>
+     <p class='subtitle'> Instantiating Objects of Other Classes </p>
+     <p class='text'> You may have noticed that within our Craps class we instantiated objects of two other Classes. We did this in to get two Die and roll them in the context of the <code>roll</code> method definition:</p>
+     <p class='text'>
+     <pre class="prettyprint ruby">@prev_roll = Array.new(2) { Die.new(6).roll }</pre></p>
+     <p class='text'> We also did it to create a Bet in the context of our <code>bet</code> method:</p>
+     <p class='text'>
+     <pre class="prettyprint ruby">@unresolved_bets << Bet.new(name, amount, @point)</pre></p>
+     <p class='text'> This is where it gets fun! We are taking advantage of other Classes -- using them to create and use sophisticated data structures that have their useful attributes and functions! If you want to check out the Bet class and other required files you can find them here:
+      <ul class='list'>
+        <li><a href='../playground/Craps/play.rb'>play.rb</a> # execute this to play the game</li>
+        <li><a href='../playground/Craps/craps.rb'>craps.rb</a></li>
+        <li><a href='../playground/Craps/bet.rb'>bet.rb</a></li>
+        <li><a href='../playground/Craps/betdata.rb'>betdata.rb</a></li>
+        <li><a href='../playground/Craps/die.rb'>die.rb</a></li>
+        <li><a href='../playground/Craps/crapsdie.rb'>crapsdie.rb</a></li>
+      </ul>
+      Here's how it all looks when it's executed:
+      <pre>
+      You've got $1000 whacha wanna do? Type 'bet', 'roll', or 'walk away':
+      >> bet
+      What bet would you like to make? Enter one of the following:
+      passline
+      dontpass
+      place4
+      place5
+      place6
+      place8
+      place9
+      place10
+      field
+      hard4
+      hard6
+      hard8
+      hard10
+      aces
+      craps
+      yo
+      ace_deuce
+      midnight
+      any_seven
+      world
+      >> passline
+      You can bet up to $1000. How much do you wanna wager?
+      >> 200
+      You have these bets:
+      passline bet for 200
+      You've got $800 whacha wanna do? Type 'bet', 'roll', or 'walk away':
+      >> roll
+      You rolled *5* and *4* for a total of **9**
+      9 is the point! Place your bets!
+      You have these bets:
+      passline bet for 200
+      You've got $800 whacha wanna do? Type 'bet', 'roll', or 'walk away':
+      >> bet
+      What bet would you like to make? Enter one of the following:
+      passline
+      ...
+      odds
+      >> odds
+      You can bet up to $800. How much do you wanna wager?
+      >> 400
+      You have these bets:
+      passline bet for 200
+      odds bet for 400
+      You've got $400 whacha wanna do? Type 'bet', 'roll', or 'walk away':
+      >> bet
+      What bet would you like to make? Enter one of the following:
+      passline
+      ...
+      world
+      >> hard8
+      You can bet up to $400. How much do you wanna wager?
+      >> 200
+      You have these bets:
+      passline bet for 200
+      odds bet for 400
+      hard8 bet for 200
+      You've got $200 whacha wanna do? Type 'bet', 'roll', or 'walk away':
+      >> roll
+      You rolled *2* and *5* for a total of **7**
+      You lose your passline bet of $200
+      You lose your odds bet of $400
+      You lose your hard8 bet of $200
+      Coming out! Place your bets!
+      You've got $200 whacha wanna do? Type 'bet', 'roll', or 'walk away':
+      >> walk away
+      Congrats you left with $200! That's gotta be a new record!
+      </pre>
+     </p>
+
+    </div>
+    <svg id="breadcrumbs" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <!--<circle id="white" cx="50%" cy="50%" r="43.75%" fill='#FFFFFF' />-->
+        <!--<circle id="black" cx="50%" cy="50%" r="34.375%" fill='#000000' />-->
+        <circle id="blue" cx="50%" cy="50%" r="25%" fill='#165DD9' />
+        <circle id="red" cx="50%" cy="50%" r="15.625%" fill='#C91A1A' />
+
+        <defs>
+          <path id="blog"
+                d="M 250 312.5
+                   A 62 62 0 0 0 312.5 250" />
+          <path id="post"
+                d="M 250 359.3
+                   A 109 109 0 0 0 359.3 250" />
+        </defs>
+
+        <a xlink:href="#" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <text text-anchor="middle" id="post_id" style="font-family:'Roboto Slab'; font-size: 90%;">
+            <textPath xlink:href="#post" startOffset="50%">
+              Craps Class
+            </textPath>
+          </text>
+        </a>
+
+        <a xlink:href="index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <text text-anchor="middle" id="blogposts" style="font-family:'Roboto Slab'; font-size: 90%;">
+            <textPath xlink:href="#blog" startOffset="50%">
+              Blog-Posts
+            </textPath>
+          </text>
+        </a>
+
+        <a xlink:href="../index.html" class="sitelink" onmouseover="evt.target.setAttribute('opacity', '0.5');" onmouseout="evt.target.setAttribute('opacity','1)');">
+          <circle id="yellow" cx="50%" cy="50%" r="6.25%" fill='#F7D705' xlink:href="../index.html" />
+        </a>
+    </svg>
+    <a href='../index.html' class='sitelink' id="home_button">
+      <span aria-hidden="true" data-icon="&#xe605;"></span>
+    </a>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=doxy"></script>
+  </body>
+</html>

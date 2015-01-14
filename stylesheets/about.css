@@ -1,0 +1,55 @@
+#content {
+  margin-top: 0px;
+}
+
+#bio_pic {
+  background-image: url(../img/7674847.png);
+  width: 306px;
+  height: 455px;
+  float: left;
+  margin-right: 40px;
+  border-radius: 25px;
+}
+
+#bio_pic span {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 800px) {
+
+  header{
+    font-size: 45%;
+  }
+
+  article{
+    display: block;
+    clear: both;
+    width: 100%;
+    margin: 0px auto;
+  }
+
+  section{
+    text-align: center;
+  }
+
+  div#content {
+    width: 98%;
+    height: 100%;
+    margin: 0px auto;
+    padding: 0px;
+    min-width: 310px;
+  }
+
+  #bio_pic {
+    width: 306px;
+    height: 455px;
+    display: block;
+    clear: both;
+    margin: 0 auto;
+  }
+
+}
