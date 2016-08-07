@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Lightbox</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <header class="header">
+          <span class="logo">Lightbox</span>
+          <form class="search-form">
+            <input class="search-input" placeholder="Search" type="text" />
+            <button class="search-button">
+              Go!
+            </button>
+          </form>
+        </header>
+        <section class="content-area">
+          <div class="thumbnail-content-area">
+          </div>
+        </section>
+        <script type="text/template" class="lightbox-template">
+          <div class="lightbox-overlay">
+            <div class="lightbox">
+              <a href="javascript:void(0)" class="lightbox-close">X</a>
+              <a href="javascript:void(0)" class="prev">◀</a>
+              <a href="javascript:void(0)" class="next">▶</a>
+              <img class="lightbox-image" />
+            </div>
+          </div>
+        </script>
+        <script type="text/template" class="content-template">
+          <div class="error no-results-error">Found no images for that search term. Please try a different one.</div>
+          <div class="spinner"></div>
+        </script>
+        <script src="static/bundle.js"></script>
+    </body>
+</html>

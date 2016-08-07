@@ -1,0 +1,27 @@
+{
+  "name": "lightbox",
+  "version": "1.0.0",
+  "description": "View thumbnail images in a lightbox",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test/*.js",
+    "build": "browserify ./js/app.js -o ./static/bundle.js",
+    "watch": "watchify ./js/app.js -o ./static/bundle.js"
+  },
+  "author": "Andy Archer <andrew.m.archer@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "chai": "^3.5.0",
+    "jsdom": "9.4.1",
+    "jsdom-global": "2.0.0",
+    "mocha": "^3.0.0",
+    "sinon": "^1.17.5",
+    "sinon-as-promised": "^4.0.2",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "unsplash-js": "^4.2.0",
+    "whatwg-fetch": "^1.0.0"
+  }
+}
