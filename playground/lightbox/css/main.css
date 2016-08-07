@@ -1,0 +1,153 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  line-height: 60px;
+  height: 60px;
+  text-align: center;
+}
+
+.logo {
+  float: left;
+  margin-left: 12px;
+}
+
+.search-form {
+  display: inline-block;
+}
+
+.search-button, .search-input {
+  line-height: 24px;
+  margin: 12px;
+  text-align: center;
+}
+
+.content-area {
+  flex: 1;
+  display: flex;
+  background-color: #000;
+  overflow: auto;
+}
+
+.thumbnail-content-area {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 12px;
+}
+
+.thumbnail-image {
+  display: inline-block;
+  position: relative;
+  transform: rotateY(180deg);
+  transition: transform 0.8s cubic-bezier(.47, 1.01, .71, 1.22);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  margin: 2px;
+  height: 200px;
+  width: 200px;
+  background-size: cover;
+}
+
+.thumbnail-image.loaded {
+  transform: rotateY(0deg);
+}
+
+.thumbnail-image:after {
+  content: '';
+  right: 0px;
+  bottom: 0px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #303030;
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.lightbox-overlay {
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+}
+
+.lightbox {
+  position: relative;
+  margin: 0 auto;
+  padding: 25px;
+  border-radius: 25px;
+  background-color: #FFF;
+}
+
+.lightbox-image {
+  max-width: 80vh;
+  max-height: 80vh;
+  margin: 0 auto;
+  padding: 25px;
+  border-radius: 10px;
+  background-color: #FFF;
+}
+
+.lightbox-close,
+.next,
+.prev {
+  position: absolute;
+  text-decoration: none;
+  color: #000;
+}
+
+.lightbox-close {
+  top: 20px;
+  right: 20px;
+}
+
+.next, .prev {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.error {
+  color: #FFF;
+}
+
+.spinner {
+  border: 2px #d4d4d4 solid;
+  border-radius: 50%;
+  border-color: rgba(255, 255, 255, 0.3);
+  border-top-color: #FFF;
+  animation: rotate 1s infinite linear;
+  margin: 24px auto;
+  backface-visibility: hidden;
+  height: 200px;
+  width: 200px;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+}
