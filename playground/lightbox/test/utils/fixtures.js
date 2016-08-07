@@ -4,7 +4,7 @@ var albumImage = {
   account_id: 11533024,
   account_url: 'RationalLunatic',
   comment_count: 343,
-  cover: "tr3GoLC",
+  cover: 'tr3GoLC',
   cover_height: 623,
   cover_width: 859,
   datetime: 1423198078,
@@ -32,42 +32,71 @@ var albumImage = {
 };
 
 var image = {
- account_id: 12563425,
- account_url: 'ruediga',
- animated: true,
- bandwidth: 69327351205180,
- comment_count: 244,
- datetime: 1460034808,
- description: null,
- downs: 87,
- favorite: false,
- gifv: 'http://i.imgur.com/MfH8sAF.gifv',
- height: 404,
- id: 'MfH8sAF',
- in_gallery: true,
- is_ad: false,
- is_album: false,
- link: 'http://i.imgur.com/MfH8sAFh.gif',
- looping: true,
- mp4: 'http://i.imgur.com/MfH8sAF.mp4',
- mp4_size: 1113993,
- nsfw: false,
- points: 12329,
- score: 12883,
- section: 'Wellthatsucks',
- size: 62482967,
- title: 'MRW',
- topic: 'Reaction',
- topic_id: 23,
- type: 'image/gif',
- ups: 12416,
- views: 1109540,
- vote: null,
- width: 718
+  account_id: 12563425,
+  account_url: 'ruediga',
+  animated: true,
+  bandwidth: 69327351205180,
+  comment_count: 244,
+  datetime: 1460034808,
+  description: null,
+  downs: 87,
+  favorite: false,
+  gifv: 'http://i.imgur.com/MfH8sAF.gifv',
+  height: 404,
+  id: 'MfH8sAF',
+  in_gallery: true,
+  is_ad: false,
+  is_album: false,
+  link: 'http://i.imgur.com/MfH8sAFh.gif',
+  looping: true,
+  mp4: 'http://i.imgur.com/MfH8sAF.mp4',
+  mp4_size: 1113993,
+  nsfw: false,
+  points: 12329,
+  score: 12883,
+  section: 'Wellthatsucks',
+  size: 62482967,
+  title: 'MRW',
+  topic: 'Reaction',
+  topic_id: 23,
+  type: 'image/gif',
+  ups: 12416,
+  views: 1109540,
+  vote: null,
+  width: 718
 };
+
+var html = '\
+  <header class="header">\
+    <span class="logo">Lightbox</span>\
+    <form class="search-form">\
+      <input class="search-input" placeholder="Search" type="text" />\
+      <button class="search-button">\
+        Go!\
+      </button>\
+    </form>\
+  </header>\
+  <section class="content-area">\
+    <div class="thumbnail-content-area">\
+    </div>\
+  </section>\
+  <div class="hidden lightbox-template content-template">\
+    <div class="lightbox-overlay">\
+      <div class="lightbox">\
+        <a href="javascript:void(0)" class="lightbox-close">X</a>\
+        <a href="javascript:void(0)" class="prev">◀</a>\
+        <a href="javascript:void(0)" class="next">▶</a>\
+        <img class="lightbox-image" />\
+      </div>\
+    </div>\
+    <div class="error no-results-error">Found no images for that search term. Please try a different one.</div>\
+    <div class="spinner"></div>\
+  </div>';
 
 var fixtures = {
   albumImage: albumImage,
+
+  html: html,
 
   image: image,
 

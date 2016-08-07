@@ -9,6 +9,10 @@ var NEXT_CLASSNAME = 'next';
 var PREV_CLASSNAME = 'prev';
 var THUMBNAIL_SPIN_DELAY = 50;
 
+function applyLoadedClassName(thumbnailImage) {
+  thumbnailImage.className = LOADED_THUMBNAIL_IMAGE_CLASSNAME;
+}
+
 var View = function(opts) {
   this._searchForm = opts.searchForm;
   this._searchInput = opts.searchInput;
@@ -48,7 +52,7 @@ View.prototype.renderThumbnails = function(thumbnailsData) {
     content = this._noResultsErrorMessage;
   } else {
     content = document.createDocumentFragment();
-    this._thumbnailImages = thumbnailsData.map(this._createThumbnailImage)
+    this._thumbnailImages = thumbnailsData.map(this._createThumbnailImage);
     this._thumbnailImages.forEach(content.appendChild.bind(content));
   }
   this._thumbnailContentArea.innerHTML = '';
@@ -83,38 +87,36 @@ View.prototype._closeLightbox = function() {
 };
 
 View.prototype._createThumbnailImage = function(thumbnailData, index) {
-  var image = new Image();
-  image.src = thumbnailData.link;
+  var image = document.createElement('img');
   var thumbnailImage = document.createElement('div');
   thumbnailImage.className = THUMBNAIL_IMAGE_CLASSNAME;
-  thumbnailImage.style.backgroundImage = 'url("' + thumbnailData.link + '")';
   thumbnailImage.id = thumbnailData.id;
-  image.onload = function() {
-    setTimeout(function() {
-      thumbnailImage.className = LOADED_THUMBNAIL_IMAGE_CLASSNAME;
-    }, THUMBNAIL_SPIN_DELAY * index);
-  };
+  image.addEventListener('load', function() {
+    setTimeout(applyLoadedClassName.bind(null, thumbnailImage), THUMBNAIL_SPIN_DELAY * index);
+  });
+  image.src = thumbnailData.link;
+  thumbnailImage.style.backgroundImage = 'url("' + thumbnailData.link + '")';
 
   return thumbnailImage;
 };
 
 View.prototype._handleLightboxClick = function(event) {
   switch(event.target.className) {
-    case LIGHTBOX_CLASSNAME:
-      event.stopPropagation();
-      break;
-    case NEXT_CLASSNAME:
-      event.stopPropagation();
-      this._getLightboxImage(this._lightboxImageData.nextImageId);
-      break;
-    case PREV_CLASSNAME:
-      event.stopPropagation();
-      this._getLightboxImage(this._lightboxImageData.prevImageId);
-      break;
-    case LIGHTBOX_OVERLAY_CLASSNAME:
-    case LIGHTBOX_CLOSE_CLASSNAME:
-      this._closeLightbox();
-      break;
+  case LIGHTBOX_CLASSNAME:
+    event.stopPropagation();
+    break;
+  case NEXT_CLASSNAME:
+    event.stopPropagation();
+    this._getLightboxImage(this._lightboxImageData.nextImageId);
+    break;
+  case PREV_CLASSNAME:
+    event.stopPropagation();
+    this._getLightboxImage(this._lightboxImageData.prevImageId);
+    break;
+  case LIGHTBOX_OVERLAY_CLASSNAME:
+  case LIGHTBOX_CLOSE_CLASSNAME:
+    this._closeLightbox();
+    break;
   }
 };
 

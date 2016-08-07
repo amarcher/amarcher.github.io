@@ -6,7 +6,7 @@ var chaiAssert = require('chai').assert;
 var sinonAssert = require('sinon').assert;
 var sinon = require('sinon').sandbox.create();
 var View = require('../js/view');
-var fixtures = require('./utils/fixtures')
+var fixtures = require('./utils/fixtures');
 
 describe('View', function() {
   var view;
@@ -20,33 +20,7 @@ describe('View', function() {
   var spinner;
 
   function addFixtures() {
-    document.body.innerHTML = '\
-      <header class="header">\
-        <span class="logo">Lightbox</span>\
-        <form class="search-form">\
-          <input class="search-input" placeholder="Search" type="text" />\
-          <button class="search-button">\
-            Go!\
-          </button>\
-        </form>\
-      </header>\
-      <section class="content-area">\
-        <div class="thumbnail-content-area">\
-        </div>\
-      </section>\
-      <div class="hidden">\
-        <div class="lightbox-overlay">\
-          <div class="lightbox">\
-            <a href="javascript:void(0)" class="lightbox-close">X</a>\
-            <a href="javascript:void(0)" class="prev">◀</a>\
-            <a href="javascript:void(0)" class="next">▶</a>\
-            <img class="lightbox-image" />\
-          </div>\
-        </div>\
-        <div class="error no-results-error">Found no images for that search term. Please try a different one.</div>\
-        <div class="spinner"></div>\
-      </div>\
-    ';
+    document.body.innerHTML = fixtures.html;
     searchForm = document.getElementsByClassName('search-form')[0];
     searchInput = document.getElementsByClassName('search-input')[0];
     thumbnailContentArea = document.getElementsByClassName('thumbnail-content-area')[0];
@@ -189,7 +163,7 @@ describe('View', function() {
     });
 
     context('when the lightbox is closed', function() {
-      beforeEach(() => {
+      beforeEach(function() {
         view._lightboxOpened = false;
         view.showLightboxForImage(fixtures.lightboxImageData);
       });
@@ -225,11 +199,11 @@ describe('View', function() {
         target: {
           id: '1234'
         }
-      }
+      };
     });
 
     context('when passed an event with the loaded thumbnail image classname', function() {
-      beforeEach(() => {
+      beforeEach(function() {
         evt.target.className = 'thumbnail-image loaded';
         view._openLightBox(evt);
       });
@@ -241,7 +215,7 @@ describe('View', function() {
     });
 
     context('when passed an event that does not have the loaded thumbnail image classname', function() {
-      beforeEach(() => {
+      beforeEach(function() {
         evt.target.className = 'thumbnail-image';
         view._openLightBox(evt);
       });
@@ -253,7 +227,7 @@ describe('View', function() {
   });
 
   describe('#_closeLightbox', function() {
-    beforeEach(() => {
+    beforeEach(function() {
       sinon.stub(document.body, 'removeChild');
       view._closeLightbox();
     });
@@ -268,10 +242,37 @@ describe('View', function() {
     });
   });
 
+  describe('#_createThumbnailImage', function() {
+    var img;
+    var div;
+
+    beforeEach(function() {
+      img = document.createElement('img');
+      div = document.createElement('div');
+      sinon.stub(document, 'createElement');
+      sinon.stub(img, 'addEventListener');
+      document.createElement.withArgs('img').returns(img);
+      document.createElement.withArgs('div').returns(div);
+    });
+
+    it('returns a thumbnail image div with correct properties', function() {
+      var thumbnailImage = view._createThumbnailImage(fixtures.thumbnailImage, 0);
+      assert.strictEqual(thumbnailImage.className, 'thumbnail-image');
+      assert.strictEqual(thumbnailImage.id, fixtures.thumbnailImage.id);
+      assert.strictEqual(thumbnailImage.style.backgroundImage, 'url(' + fixtures.thumbnailImage.link + ')');
+    });
+
+    it('adds an event listener to #applyLoadedClassName on load', function() {
+      view._createThumbnailImage(fixtures.thumbnailImage, 0);
+      sinonAssert.calledOnce(img.addEventListener);
+      sinonAssert.calledWith(img.addEventListener, 'load');
+    });
+  });
+
   describe('#_handleLightboxClick', function() {
     var evt;
 
-    beforeEach(() => {
+    beforeEach(function() {
       sinon.stub(view, '_closeLightbox');
       view.bindCallbacks(callbacks);
       view.showLightboxForImage(fixtures.lightboxImageData);
@@ -283,7 +284,7 @@ describe('View', function() {
     });
 
     context('with an unspecified target', function() {
-      beforeEach(() => {
+      beforeEach(function() {
         evt.target.className = 'default';
         view._handleLightboxClick(evt);
       });
@@ -302,7 +303,7 @@ describe('View', function() {
     });
 
     context('with the lightbox as a target', function() {
-      beforeEach(() => {
+      beforeEach(function() {
         evt.target.className = 'lightbox';
         view._handleLightboxClick(evt);
       });
@@ -321,7 +322,7 @@ describe('View', function() {
     });
 
     context('with "next" as a target', function() {
-      beforeEach(() => {
+      beforeEach(function() {
         evt.target.className = 'next';
         view._handleLightboxClick(evt);
       });
@@ -341,7 +342,7 @@ describe('View', function() {
     });
 
     context('with "prev" as a target', function() {
-      beforeEach(() => {
+      beforeEach(function() {
         evt.target.className = 'prev';
         view._handleLightboxClick(evt);
       });
@@ -361,7 +362,7 @@ describe('View', function() {
     });
 
     context('with lightbox overlay as a target', function() {
-      beforeEach(() => {
+      beforeEach(function() {
         evt.target.className = 'lightbox-overlay';
         view._handleLightboxClick(evt);
       });
@@ -376,7 +377,7 @@ describe('View', function() {
     });
 
     context('with lightbox close button as a target', function() {
-      beforeEach(() => {
+      beforeEach(function() {
         evt.target.className = 'lightbox-close';
         view._handleLightboxClick(evt);
       });
