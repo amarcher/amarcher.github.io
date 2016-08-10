@@ -92,8 +92,8 @@ body {
 }
 
 .lightbox-image {
-  max-width: 80vh;
-  max-height: 80vw;
+  max-width: 80vw;
+  max-height: 80vh;
   margin: 0 auto;
   padding: 25px;
   border-radius: 10px;
